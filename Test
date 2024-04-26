@@ -7,7 +7,7 @@
   "dns": {
     "servers": [
       {
-        "tag": "@oh_Erfan",
+        "tag": "dns-remote",
         "address": "udp://1.1.1.1",
         "address_resolver": "dns-direct"
       },
@@ -17,18 +17,18 @@
         "detour": "direct-fragment"
       },
       {
-        "tag": "@oh_Erfan",
+        "tag": "dns-direct",
         "address": "1.1.1.1",
         "address_resolver": "dns-local",
         "detour": "direct"
       },
       {
-        "tag": "@oh_Erfan",
+        "tag": "dns-local",
         "address": "local",
         "detour": "direct"
       },
       {
-        "tag": "@oh_Erfan",
+        "tag": "dns-block",
         "address": "rcode://success"
       }
     ],
@@ -64,7 +64,7 @@
   "inbounds": [
     {
       "type": "tun",
-      "tag": "@oh_Erfan",
+      "tag": "tun-in",
       "mtu": 9000,
       "inet4_address": "172.19.0.1/28",
       "auto_route": true,
@@ -76,7 +76,7 @@
     },
     {
       "type": "mixed",
-      "tag": "@oh_Erfan",
+      "tag": "mixed-in",
       "listen": "127.0.0.1",
       "listen_port": 2334,
       "sniff": true,
@@ -84,7 +84,7 @@
     },
     {
       "type": "direct",
-      "tag": "@oh_Erfan",
+      "tag": "dns-in",
       "listen": "127.0.0.1",
       "listen_port": 6450,
       "override_address": "1.1.1.1",
@@ -94,18 +94,18 @@
   "outbounds": [
     {
       "type": "selector",
-      "tag": "@oh_Erfan",
+      "tag": "select",
       "outbounds": [
         "auto",
-        "@oh_Erfan § 0"
+        "@oh_Erfan"
       ],
       "default": "auto"
     },
     {
       "type": "urltest",
-      "tag": "@oh_Erfan",
+      "tag": "auto",
       "outbounds": [
-        "@oh_Erfan § 0"
+        "@oh_Erfan"
       ],
       "url": "http://cp.cloudflare.com/",
       "interval": "10m0s",
@@ -130,15 +130,15 @@
     },
     {
       "type": "dns",
-      "tag": "@oh_Erfan"
+      "tag": "dns-out"
     },
     {
       "type": "direct",
-      "tag": "@oh_Erfan"
+      "tag": "direct"
     },
     {
       "type": "direct",
-      "tag": "@oh_Erfan",
+      "tag": "direct-fragment",
       "tls_fragment": {
         "enabled": true,
         "size": "1-500",
