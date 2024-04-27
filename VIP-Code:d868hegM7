@@ -47,16 +47,16 @@
     "final": "dns-remote",
     "static_ips": {
       "sky.rethinkdns.com": [
-        "188.114.97.3",
-        "188.114.96.3",
-        "2a06:98c1:3120::3",
-        "2a06:98c1:3121::3",
-        "104.18.203.232",
+        "188.114.98.0",
+        "188.114.99.0",
+        "2a06:98c1:3122::",
+        "2a06:98c1:3123::",
         "104.18.202.232",
-        "188.114.96.3",
+        "104.18.203.232",
         "188.114.97.3",
-        "2a06:98c1:3121::3",
-        "2a06:98c1:3120::3"
+        "188.114.96.3",
+        "2a06:98c1:3121::6",
+        "2a06:98c1:3120::6"
       ]
     },
     "independent_cache": true
@@ -97,7 +97,7 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "@oh_Erfan § 0"
+        "@Migekeh-d868hegM7 § 0"
       ],
       "default": "auto"
     },
@@ -105,7 +105,7 @@
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "@oh_Erfan § 0"
+        "@Migekeh-d868hegM7 § 0"
       ],
       "url": "http://cp.cloudflare.com/",
       "interval": "10m0s",
@@ -113,14 +113,14 @@
     },
     {
       "type": "wireguard",
-      "tag": "@oh_Erfan § 0",
+      "tag": "@Migekeh-d868hegM7 § 0",
       "local_address": [
         "172.16.0.2/24",
-        "2606:4700:110:8818:5934:379b:22a:ea48/128"
+        "2606:4700:110:85dc:d96a:5a3e:a32:b11f/128"
       ],
-      "private_key": "aNCOlbDP312ZNAJcMEZ/zLTPBx63m8XDtLt50D9iumQ=",
-      "server": "188.114.96.166",
-      "server_port": 903,
+      "private_key": "uBqg1gcujXiteRlfSXuxuvY8SAfywyUPQf/qzJinLHA=",
+      "server": "188.114.98.96",
+      "server_port": 1010,
       "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
       "reserved": "AAAA",
       "mtu": 1280,
@@ -196,7 +196,7 @@
     },
     "clash_api": {
       "external_controller": "127.0.0.1:6756",
-      "secret": "NjXe9cajFT2qyfA5"
+      "secret": "yzxcNCJDDz6l-XeB"
     }
   }
 }
