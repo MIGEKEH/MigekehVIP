@@ -1,0 +1,96 @@
+{
+        "route": {
+                "geoip": {
+                "path": "geo-assets\\sagernet-sing-geoip-geoip.db"
+                },
+                "geosite": {
+                "path": "geo-assets\\sagernet-sing-geosite-geosite.db"
+                },
+                "rules": [
+                {
+                        "inbound": "dns-in",
+                        "outbound": "dns-out"
+                },
+                {
+                        "port": 53,
+                        "outbound": "dns-out"
+                },
+                {
+                        "clash_mode": "Direct",
+                        "outbound": "direct"
+                },
+                {
+                        "clash_mode": "Global",
+                        "outbound": "select"
+                }
+                ],
+                "auto_detect_interface": true,
+                "override_android_vpn": true
+        },
+        "outbounds": [
+                {
+                "type": "selector",
+                "tag": "select",
+                "outbounds": [
+                        "auto",
+                        "IP->Iran, @Migekeh🇮🇷",
+                        "IP->Germany, @Migekeh🇩🇪"
+                ],
+                "default": "auto"                                                                               },
+                {
+                "type": "urltest",
+                "tag": "auto",
+                "outbounds": [
+                        "IP->Iran, @Migekeh🇮🇷",
+                        "IP->Germany, @Migekeh🇩🇪"
+                ],
+                "url": "http://cp.cloudflare.com/",                                                             "interval": "10m0s"
+                },
+                {                                                                                               "type": "wireguard",
+                "tag": "IP->Iran, @Migekeh🇮🇷",
+                "local_address": [
+                        "172.16.0.2/32",
+                        "2606:4700:110:8e9f:3421:6758:d7a0:7001/128"
+                ],
+                "private_key": "aO/UBfWdeTLAzc+6UBsTGcensLvybh2FaGqwm5AY8nY=",
+                "server": "188.114.97.184",
+                "server_port": 988,
+                "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+                "reserved": [167,3,67],
+                "mtu": 1280,
+                "fake_packets": "5-10"
+                },
+                {
+                "type": "wireguard",
+                "tag": "IP->Germany, @Migekeh🇩🇪",
+                "detour": "IP->Iran, @Migekeh🇮🇷",
+                "local_address": [
+                        "172.16.0.2/32",
+                        "2606:4700:110:8a31:1c69:aeeb:50bf:31d/128"
+                ],
+                "private_key": "uESkB3/8wVdMsPX/T43Gi4fwc834pMrkviz8mFgETWM=",
+                "server": "188.114.97.184",
+                "server_port": 988,
+                "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+                "reserved": [183,50,154],
+                "mtu": 1280,
+                "fake_packets": "5-10"
+                },
+                {
+                "type": "dns",
+                "tag": "dns-out"
+                },
+                {
+                "type": "direct",
+                "tag": "direct"
+                },
+                {
+                "type": "direct",
+                "tag": "bypass"
+                },
+                {
+                "type": "block",
+                "tag": "block"
+                }
+        ]
+        }
